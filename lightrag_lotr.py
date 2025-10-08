@@ -316,7 +316,7 @@ def load_or_create_embeddings(chunks):
         return chunks, embeddings
 
 
-def search_similar_chunks(query, chunks, embeddings, top_k=10):
+def search_similar_chunks(query, chunks, embeddings, top_k=5):
     """Search for similar chunks using cosine similarity"""
     # Encode the query
     query_embedding = model.encode([query])
@@ -381,9 +381,9 @@ def main():
             print("-" * 50)
 
             # Search for similar chunks
-            results = search_similar_chunks(user_input, chunks, embeddings, top_k=10)
+            results = search_similar_chunks(user_input, chunks, embeddings, top_k=5)
 
-            print("\nTop 10 most similar chunks:")
+            print("\nTop 5 most similar chunks:")
             print("=" * 50)
 
             for result in results:
