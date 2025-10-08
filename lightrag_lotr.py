@@ -269,8 +269,24 @@ def load_or_create_embeddings(chunks):
         return chunks, embeddings
 
 
-def search_similar_chunks(query, chunks, embeddings, top_k=5):
-    """Search for similar chunks using cosine similarity"""
+def max_window_cosine(query_vec, doc_token_vecs, window_size=5):
+    """Calculate maximum cosine similarity using sliding window approach"""
+    from numpy import dot
+    from numpy.linalg import norm
+
+    def cos(a, b): 
+        return float(dot(a, b) / (norm(a) * norm(b) + 1e-9))
+
+    best = -1.0
+    for i in range(0, len(doc_token_vecs) - window_size + 1):
+        win = doc_token_vecs[i:i+window_size]
+        win_vec = sum(win) / len(win)          # mean within the small window
+        best = max(best, cos(query_vec, win_vec))
+    return best
+
+
+def search_similar_chunks(query, chunks, embeddings, top_k=5, window_size=5):
+    """Search for similar chunks using window sliding cosine similarity"""
     # Extract dialogue parts from query for embedding
     query_lines = query.split("\n")
     query_dialogue_lines = [
@@ -283,12 +299,51 @@ def search_similar_chunks(query, chunks, embeddings, top_k=5):
         query_dialogue = query
 
     # Encode the query dialogue
-    query_embedding = model.encode([query_dialogue])
+    query_embedding = model.encode([query_dialogue])[0]
 
-    # Calculate cosine similarity
-    similarities = cosine_similarity(query_embedding, embeddings)[0]
+    # For each chunk, create sentence-level embeddings and use window sliding
+    similarities = []
+    
+    for i, chunk in enumerate(chunks):
+        # Split chunk into sentences for window sliding
+        chunk_text = chunk["full_chunk"]
+        
+        # Extract dialogue parts for better matching
+        lines = chunk_text.split("\n")
+        dialogue_lines = [line for line in lines if line.startswith("[DIALOGUE]")]
+        if dialogue_lines:
+            dialogue_text = "\n".join(dialogue_lines)
+        else:
+            dialogue_text = chunk_text
+        
+        # Split into sentences (simple approach - split on periods, exclamation, question marks)
+        import re
+        sentences = re.split(r'[.!?]+', dialogue_text)
+        sentences = [s.strip() for s in sentences if s.strip()]
+        
+        if len(sentences) == 0:
+            # Fallback to original embedding if no sentences found
+            similarities.append(cosine_similarity([query_embedding], [embeddings[i]])[0][0])
+            continue
+            
+        # Create embeddings for each sentence
+        sentence_embeddings = model.encode(sentences)
+        
+        # Use window sliding to find best match
+        if len(sentence_embeddings) < window_size:
+            # If not enough sentences, use all of them
+            window_vec = np.mean(sentence_embeddings, axis=0)
+            from numpy import dot
+            from numpy.linalg import norm
+            similarity = float(dot(query_embedding, window_vec) / (norm(query_embedding) * norm(window_vec) + 1e-9))
+        else:
+            # Use window sliding
+            similarity = max_window_cosine(query_embedding, sentence_embeddings, window_size)
+        
+        similarities.append(similarity)
 
     # Get top-k most similar chunks
+    similarities = np.array(similarities)
     top_indices = np.argsort(similarities)[::-1][:top_k]
 
     results = []
