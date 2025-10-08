@@ -1,0 +1,19 @@
+[project]
+name = "rag-anything-test"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "raganything[all]>=1.2.8",
+    "beautifulsoup4>=4.12.0",
+    "fountain-tools",
+]
+
+[tool.uv.workspace]
+members = [
+    "fountain-tools/python",
+]
+
+[tool.uv.sources]
+fountain-tools = { workspace = true }

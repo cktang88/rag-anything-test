@@ -1,0 +1,25 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+.env
+input_files
+
+output
+
+rag_storage
+
+test_storage
+
+demo_storage
+
+chunks_output
+
+fountain-tools
