@@ -2,21 +2,19 @@ import os
 import sys
 import json
 import asyncio
+import argparse
 from lightrag_lotr import extract_text_from_html
 
 # Add fountain-tools to Python path
 sys.path.insert(0, "/Users/apache/github/rag-anything-test/fountain-tools/python/src")
 
 
-async def main():
-    html_file = "./input_files/Lord-of-the-Rings-Fellowship-of-the-Ring,-The.html"
-    output_file = "./fountain_objects.json"
-
-    print("Extracting Fountain objects from LOTR screenplay...")
-    print(f"Processing: {html_file}")
+async def main(input_file, output_file):
+    print(f"Extracting Fountain objects from screenplay...")
+    print(f"Processing: {input_file}")
 
     # Extract text from HTML
-    text_content = extract_text_from_html(html_file)
+    text_content = extract_text_from_html(input_file)
     print(f"Extracted {len(text_content)} characters")
 
     # Parse with Fountain
@@ -84,4 +82,17 @@ async def main():
 
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    parser = argparse.ArgumentParser(description="Extract Fountain objects from screenplay files")
+    parser.add_argument("input_file", help="Path to the input HTML screenplay file")
+    parser.add_argument("-o", "--output", dest="output_file", 
+                       help="Path to the output JSON file (default: fountain_objects.json)",
+                       default="fountain_objects.json")
+    
+    args = parser.parse_args()
+    
+    # Check if input file exists
+    if not os.path.exists(args.input_file):
+        print(f"Error: Input file '{args.input_file}' not found.")
+        sys.exit(1)
+    
+    asyncio.run(main(args.input_file, args.output_file))

@@ -1,5 +1,7 @@
 import os
+import sys
 import json
+import argparse
 import numpy as np
 from sentence_transformers import SentenceTransformer
 from bs4 import BeautifulSoup
@@ -135,13 +137,12 @@ def extract_text_from_html(html_file_path):
     return text
 
 
-def parse_and_chunk_fountain_script(text):
+def parse_and_chunk_fountain_script(fountain_objects_file):
     """
-    Parse screenplay using fountain_objects.json for accurate element classification
+    Parse screenplay using fountain_objects JSON file for accurate element classification
     This creates focused chunks around individual dialogue exchanges with overlap
     """
     # Load fountain objects from JSON file
-    fountain_objects_file = "fountain_objects.json"
     if not os.path.exists(fountain_objects_file):
         raise FileNotFoundError(
             f"Fountain objects file not found: {fountain_objects_file}. "
@@ -237,9 +238,11 @@ def parse_and_chunk_fountain_script(text):
     return chunks
 
 
-def load_or_create_embeddings(chunks):
+def load_or_create_embeddings(chunks, fountain_objects_file):
     """Load existing embeddings or create new ones"""
-    embeddings_file = os.path.join(WORKING_DIR, "chunk_embeddings.json")
+    # Use fountain objects filename for embedding file naming
+    base_name = os.path.splitext(os.path.basename(fountain_objects_file))[0]
+    embeddings_file = os.path.join(WORKING_DIR, f"{base_name}_embeddings.json")
 
     if os.path.exists(embeddings_file):
         print("Loading existing embeddings...")
@@ -356,32 +359,40 @@ def search_similar_chunks(query, chunks, embeddings, top_k=5, window_size=5):
 
 
 def main():
+    parser = argparse.ArgumentParser(description="Interactive screenplay quote finder using fountain objects")
+    parser.add_argument("fountain_objects_file", help="Path to the fountain objects JSON file")
+    
+    args = parser.parse_args()
+    fountain_objects_file = args.fountain_objects_file
+    
     try:
-        # Extract text from the Lord of the Rings HTML file
-        html_file = "./input_files/Lord-of-the-Rings-Fellowship-of-the-Ring,-The.html"
-        print(f"Extracting text from {html_file}...")
-        text_content = extract_text_from_html(html_file)
-
-        print(f"Extracted {len(text_content)} characters of text")
+        # Check if file exists
+        if not os.path.exists(fountain_objects_file):
+            print(f"Error: File '{fountain_objects_file}' not found.")
+            return
+        
+        print(f"Loading fountain objects from {fountain_objects_file}...")
 
         # Parse screenplay with Fountain format
         print("Parsing screenplay with Fountain format...")
         try:
-            scene_chunks = parse_and_chunk_fountain_script(text_content)
+            scene_chunks = parse_and_chunk_fountain_script(fountain_objects_file)
         except Exception as e:
             print(f"Fountain parsing failed: {e}")
             raise e
 
         # Load or create embeddings
-        chunks, embeddings = load_or_create_embeddings(scene_chunks)
+        chunks, embeddings = load_or_create_embeddings(scene_chunks, fountain_objects_file)
 
         print("Text successfully processed and embedded!")
 
         # Interactive quote finder
         print("\n" + "=" * 60)
-        print("LOTR QUOTE FINDER")
+        # Extract filename for display
+        filename = os.path.basename(fountain_objects_file).replace('.json', '').replace('_', ' ').replace('fountain objects', '').strip().title()
+        print(f"SCREENPLAY QUOTE FINDER - {filename}")
         print("=" * 60)
-        print("Enter phrases to find similar quotes from The Fellowship of the Ring")
+        print(f"Enter phrases to find similar quotes from {filename}")
         print("Type 'quit' to exit")
         print("=" * 60)
 
