@@ -1,5 +1,4 @@
 import os
-import sys
 import json
 import numpy as np
 from sentence_transformers import SentenceTransformer
@@ -7,76 +6,7 @@ from bs4 import BeautifulSoup
 from sklearn.metrics.pairwise import cosine_similarity
 
 
-# Simple screenplay element parser
-class ScreenplayElement:
-    def __init__(self, element_type, text, name=None, extension=None):
-        self.type = type("Type", (), {"value": element_type})()
-        self.text = text
-        self.name = name
-        self.extension = extension
-
-
-class SimpleParser:
-    def __init__(self):
-        self.script = None
-
-    def add_text(self, text):
-        self.script = self.parse_screenplay(text)
-
-    def parse_screenplay(self, text):
-        lines = text.split("\n")
-        elements = []
-
-        for line in lines:
-            line = line.strip()
-            if not line:
-                continue
-
-            # Scene headings (INT., EXT., etc.)
-            if any(marker in line.upper() for marker in ["INT.", "EXT.", "SUPER:"]):
-                elements.append(ScreenplayElement("HEADING", line))
-
-            # Character names (all caps, not too long, not scene elements)
-            elif (
-                line.isupper()
-                and len(line) < 50
-                and not any(
-                    x in line
-                    for x in [
-                        "IMAGE:",
-                        "SUPER:",
-                        "INT.",
-                        "EXT.",
-                        "FADE",
-                        "CUT",
-                        "DISSOLVE",
-                    ]
-                )
-                and not line.startswith("(")
-            ):
-                # Check for character extensions like (O.S.), (V.O.)
-                if "(" in line and ")" in line:
-                    name, extension = line.split("(", 1)
-                    name = name.strip()
-                    extension = extension.rstrip(")")
-                    elements.append(
-                        ScreenplayElement("CHARACTER", line, name, extension)
-                    )
-                else:
-                    elements.append(ScreenplayElement("CHARACTER", line, line))
-
-            # Parentheticals (lines in parentheses)
-            elif line.startswith("(") and line.endswith(")"):
-                elements.append(ScreenplayElement("PARENTHETICAL", line))
-
-            # Dialogue (everything else that's not empty)
-            else:
-                elements.append(ScreenplayElement("DIALOGUE", line))
-
-        # Create a simple script object
-        script = type("Script", (), {})()
-        script.elements = elements
-        return script
+# Using fountain_objects.json for accurate element classification
 
 
 WORKING_DIR = "./rag_storage"
@@ -207,22 +137,29 @@ def extract_text_from_html(html_file_path):
 
 def parse_and_chunk_fountain_script(text):
     """
-    Parse screenplay using fountain-tools library and chunk by character speech segments
+    Parse screenplay using fountain_objects.json for accurate element classification
     This creates focused chunks around individual dialogue exchanges with overlap
     """
-    # Initialize parser
-    parser = SimpleParser()
+    # Load fountain objects from JSON file
+    fountain_objects_file = "fountain_objects.json"
+    if not os.path.exists(fountain_objects_file):
+        raise FileNotFoundError(
+            f"Fountain objects file not found: {fountain_objects_file}. "
+            f"Please run extract_fountain_objects.py first to generate it."
+        )
 
-    # Parse the script
-    parser.add_text(text)
-    script = parser.script
+    with open(fountain_objects_file, "r") as f:
+        fountain_data = json.load(f)
+
+    elements_data = fountain_data["elements"]
+    print(f"Loaded {len(elements_data)} elements from fountain_objects.json")
 
     # Extract speech segments and create chunks with overlap
     chunks = []
-    elements = list(script.elements)
+    elements = elements_data
 
     for i, element in enumerate(elements):
-        if element.type.value == "CHARACTER":
+        if element["type"] == "CHARACTER":
             # Found a character - create a chunk around this speech segment
             chunk_parts = []
             current_scene_heading = None
@@ -231,11 +168,11 @@ def parse_and_chunk_fountain_script(text):
             lookback_start = max(0, i - 3)  # Look back up to 3 elements
             for j in range(lookback_start, i):
                 prev_element = elements[j]
-                if prev_element.type.value == "HEADING":
-                    current_scene_heading = prev_element.text.strip()
-                elif prev_element.type.value == "ACTION" and current_scene_heading:
+                if prev_element["type"] == "HEADING":
+                    current_scene_heading = prev_element["text"].strip()
+                elif prev_element["type"] == "ACTION" and current_scene_heading:
                     chunk_parts.append(
-                        f"[{prev_element.type.value}] {prev_element.text.strip()}"
+                        f"[{prev_element['type']}] {prev_element['text'].strip()}"
                     )
 
             # Add scene heading if found
@@ -243,11 +180,9 @@ def parse_and_chunk_fountain_script(text):
                 chunk_parts.append(f"[HEADING] {current_scene_heading}")
 
             # Add the character name (use name property for CHARACTER elements)
-            char_name = (
-                element.name if hasattr(element, "name") else element.text.strip()
-            )
-            if hasattr(element, "extension") and element.extension:
-                char_name += f" ({element.extension})"
+            char_name = element["name"] if element["name"] else element["text"].strip()
+            if element["extension"]:
+                char_name += f" ({element['extension']})"
             chunk_parts.append(f"[CHARACTER] {char_name}")
 
             # Look ahead for dialogue, parentheticals, and action
@@ -255,16 +190,18 @@ def parse_and_chunk_fountain_script(text):
             while j < len(elements) and j < i + 5:  # Look ahead up to 5 elements
                 next_element = elements[j]
 
-                if next_element.type.value == "PARENTHETICAL":
-                    chunk_parts.append(f"[PARENTHETICAL] ({next_element.text.strip()})")
-                elif next_element.type.value == "DIALOGUE":
-                    chunk_parts.append(f"[DIALOGUE] {next_element.text.strip()}")
-                elif next_element.type.value == "ACTION":
-                    chunk_parts.append(f"[ACTION] {next_element.text.strip()}")
-                elif next_element.type.value == "CHARACTER":
+                if next_element["type"] == "PARENTHETICAL":
+                    chunk_parts.append(
+                        f"[PARENTHETICAL] ({next_element['text'].strip()})"
+                    )
+                elif next_element["type"] == "DIALOGUE":
+                    chunk_parts.append(f"[DIALOGUE] {next_element['text'].strip()}")
+                elif next_element["type"] == "ACTION":
+                    chunk_parts.append(f"[ACTION] {next_element['text'].strip()}")
+                elif next_element["type"] == "CHARACTER":
                     # Hit another character, stop here
                     break
-                elif next_element.type.value == "HEADING":
+                elif next_element["type"] == "HEADING":
                     # Hit a new scene, stop here
                     break
 
@@ -275,19 +212,27 @@ def parse_and_chunk_fountain_script(text):
                 j < len(elements) and j < i + 8
             ):  # Look a bit further for post-dialogue action
                 for k in range(j, min(j + 3, len(elements))):
-                    if elements[k].type.value == "ACTION":
-                        chunk_parts.append(f"[ACTION] {elements[k].text.strip()}")
-                    elif elements[k].type.value in ["CHARACTER", "HEADING"]:
+                    if elements[k]["type"] == "ACTION":
+                        chunk_parts.append(f"[ACTION] {elements[k]['text'].strip()}")
+                    elif elements[k]["type"] in ["CHARACTER", "HEADING"]:
                         break
 
-            # Create the chunk
+            # Create the chunk with metadata
             if chunk_parts and len("\n".join(chunk_parts).strip()) > 30:
                 chunk_text = "\n".join(chunk_parts).strip()
-                chunks.append(chunk_text)
+
+                # Create chunk metadata
+                chunk_metadata = {
+                    "scene_heading": current_scene_heading,
+                    "character": char_name,
+                    "full_chunk": chunk_text,
+                }
+
+                chunks.append(chunk_metadata)
 
     print(f"Created {len(chunks)} character speech chunks")
     for i, chunk in enumerate(chunks[:5]):  # Show first 5 chunks as preview
-        print(f"Chunk {i+1} preview: {chunk[:100]}...")
+        print(f"Chunk {i+1} preview: {chunk['full_chunk'][:100]}...")
 
     return chunks
 
@@ -305,8 +250,16 @@ def load_or_create_embeddings(chunks):
         print("Creating new embeddings...")
         print(f"Embedding {len(chunks)} chunks...")
 
-        # Create embeddings for all chunks
-        embeddings = model.encode(chunks, show_progress_bar=True)
+        # Extract dialogue parts for embedding
+        dialogue_parts = []
+        for chunk in chunks:
+            lines = chunk["full_chunk"].split("\n")
+            dialogue_lines = [line for line in lines if line.startswith("[DIALOGUE]")]
+            dialogue_text = "\n".join(dialogue_lines)
+            dialogue_parts.append(dialogue_text)
+
+        # Create embeddings for dialogue parts only
+        embeddings = model.encode(dialogue_parts, show_progress_bar=True)
 
         # Save embeddings for future use
         data = {"chunks": chunks, "embeddings": embeddings.tolist()}
@@ -318,8 +271,19 @@ def load_or_create_embeddings(chunks):
 
 def search_similar_chunks(query, chunks, embeddings, top_k=5):
     """Search for similar chunks using cosine similarity"""
-    # Encode the query
-    query_embedding = model.encode([query])
+    # Extract dialogue parts from query for embedding
+    query_lines = query.split("\n")
+    query_dialogue_lines = [
+        line for line in query_lines if line.startswith("[DIALOGUE]")
+    ]
+    query_dialogue = "\n".join(query_dialogue_lines)
+
+    # If no dialogue found in query, use the whole query
+    if not query_dialogue.strip():
+        query_dialogue = query
+
+    # Encode the query dialogue
+    query_embedding = model.encode([query_dialogue])
 
     # Calculate cosine similarity
     similarities = cosine_similarity(query_embedding, embeddings)[0]
@@ -387,11 +351,16 @@ def main():
             print("=" * 50)
 
             for result in results:
+                chunk = result["chunk"]
                 print(
                     f"\nRank {result['rank']} (Similarity: {result['similarity']:.4f})"
                 )
                 print("-" * 30)
-                print(result["chunk"])
+                if chunk.get("scene_heading"):
+                    print(f"Scene: {chunk['scene_heading']}")
+                if chunk.get("character"):
+                    print(f"Character: {chunk['character']}")
+                print(f"Content:\n{chunk['full_chunk']}")
                 print()
 
     except Exception as e:
