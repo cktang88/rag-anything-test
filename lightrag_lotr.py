@@ -85,6 +85,10 @@ if not os.path.exists(WORKING_DIR):
 
 # Initialize the embedding model
 print("Loading SentenceTransformer model...")
+# model = SentenceTransformer("Qwen/Qwen3-Embedding-0.6B")  # "all-MiniLM-L6-v2"
+# BAAI/bge-base-en-v1.5 --> fails miserably...
+# Qwen/Qwen3-Embedding-0.6B -> needs time to download
+# Alibaba-NLP/gte-multilingual-base - needs time to download, doesn't perform better than minilm
 model = SentenceTransformer("all-MiniLM-L6-v2")
 
 
