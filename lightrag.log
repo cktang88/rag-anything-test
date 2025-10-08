@@ -1693,3 +1693,23 @@ FileNotFoundError: [Errno 2] No such file or directory: './rag_storage/kv_store_
 2025-10-07 17:36:43,959 - lightrag - INFO - Processing 1 document(s)
 2025-10-07 17:36:43,959 - lightrag - INFO - Extracting stage 1/1: unknown_source
 2025-10-07 17:36:43,959 - lightrag - INFO - Processing d-id: doc-0698972a9e6df4161c2791cd0a36eff1
+2025-10-07 17:37:45,729 - lightrag - INFO -  == LLM cache == saving: default:extract:e21b93b7b6bca0fbb0dec7a6d993efd9
+2025-10-07 17:38:10,576 - lightrag - INFO -  == LLM cache == saving: default:extract:3759207e6e2b1eca5749ed8c1520458c
+2025-10-07 17:38:28,699 - lightrag - INFO -  == LLM cache == saving: default:extract:a7cc62970022f3378bcede52893ece16
+2025-10-07 17:38:28,700 - lightrag - INFO - Chunk 1 of 1 extracted 12 Ent + 17 Rel chunk-0698972a9e6df4161c2791cd0a36eff1
+2025-10-07 17:38:28,700 - lightrag - INFO - Merging stage 1/1: unknown_source
+2025-10-07 17:38:28,700 - lightrag - INFO - Phase 1: Processing 12 entities from doc-0698972a9e6df4161c2791cd0a36eff1 (async: 8)
+2025-10-07 17:38:28,701 - lightrag - INFO - Merged: `Galadriel` | 6+1
+2025-10-07 17:38:28,702 - lightrag - INFO - Merged: `Mount Doom` | 1+1
+2025-10-07 17:38:28,702 - lightrag - INFO - Merged: `Orcs` | 1+1
+2025-10-07 17:38:29,010 - lightrag - INFO - Merged: `Teasing Shots` | 1+1
+2025-10-07 17:38:30,038 - lightrag - INFO - Phase 2: Processing 17 relations from doc-0698972a9e6df4161c2791cd0a36eff1 (async: 8)
+2025-10-07 17:38:33,052 - lightrag - INFO - Phase 3: Updating final 12(12+0) entities and  17 relations from doc-0698972a9e6df4161c2791cd0a36eff1
+2025-10-07 17:38:33,052 - lightrag - INFO - Completed merging: 12 entities, 0 extra entities, 17 relations
+2025-10-07 17:38:33,073 - lightrag - INFO - [_] Writing graph with 100 nodes, 163 edges
+2025-10-07 17:38:33,112 - lightrag - INFO - In memory DB persist to disk
+2025-10-07 17:38:33,112 - lightrag - INFO - Completed processing file 1/1: unknown_source
+2025-10-07 17:38:33,112 - lightrag - INFO - Enqueued document processing pipeline stoped
+2025-10-07 17:38:33,113 - lightrag - INFO - Processing 1 document(s)
+2025-10-07 17:38:33,113 - lightrag - INFO - Extracting stage 1/1: unknown_source
+2025-10-07 17:38:33,113 - lightrag - INFO - Processing d-id: doc-9ab5aeaa7b080ae58aed2951152718c8
