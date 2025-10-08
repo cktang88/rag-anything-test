@@ -196,9 +196,9 @@ def main():
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
     
-    # Output first 500 chunks to separate files
-    num_chunks = min(500, len(chunks))
-    print(f"Outputting first {num_chunks} chunks to {output_dir}/")
+    # Output ALL chunks to separate files
+    num_chunks = len(chunks)
+    print(f"Outputting all {num_chunks} chunks to {output_dir}/")
     
     for i in range(num_chunks):
         chunk_file = os.path.join(output_dir, f"chunk_{i+1:03d}.txt")
