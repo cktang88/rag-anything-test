@@ -1713,3 +1713,321 @@ FileNotFoundError: [Errno 2] No such file or directory: './rag_storage/kv_store_
 2025-10-07 17:38:33,113 - lightrag - INFO - Processing 1 document(s)
 2025-10-07 17:38:33,113 - lightrag - INFO - Extracting stage 1/1: unknown_source
 2025-10-07 17:38:33,113 - lightrag - INFO - Processing d-id: doc-9ab5aeaa7b080ae58aed2951152718c8
+2025-10-07 17:38:48,553 - lightrag - INFO -  == LLM cache == saving: default:extract:d807e6b2974e5734aeebefb0c371e845
+2025-10-07 17:38:48,554 - lightrag - INFO - Chunk 1 of 1 extracted 5 Ent + 7 Rel chunk-736303e546d8f3818b92f3e444c3446c
+2025-10-07 17:38:48,554 - lightrag - INFO - Merging stage 1/1: unknown_source
+2025-10-07 17:38:48,554 - lightrag - INFO - Phase 1: Processing 5 entities from doc-736303e546d8f3818b92f3e444c3446c (async: 8)
+2025-10-07 17:38:48,554 - lightrag - INFO - Merged: `Isildur` | 2+1
+2025-10-07 17:38:48,555 - lightrag - INFO - Merged: `Sauron` | 3+1
+2025-10-07 17:38:48,555 - lightrag - INFO - Merged: `The One Ring` | 2+1
+2025-10-07 17:38:49,271 - lightrag - INFO - Phase 2: Processing 7 relations from doc-736303e546d8f3818b92f3e444c3446c (async: 8)
+2025-10-07 17:38:50,501 - lightrag - INFO - Phase 3: Updating final 5(5+0) entities and  7 relations from doc-736303e546d8f3818b92f3e444c3446c
+2025-10-07 17:38:50,501 - lightrag - INFO - Completed merging: 5 entities, 0 extra entities, 7 relations
+2025-10-07 17:38:50,539 - lightrag - INFO - [_] Writing graph with 111 nodes, 155 edges
+2025-10-07 17:38:50,548 - lightrag - INFO - In memory DB persist to disk
+2025-10-07 17:38:50,548 - lightrag - INFO - Completed processing file 1/1: unknown_source
+2025-10-07 17:38:50,549 - lightrag - INFO - Enqueued document processing pipeline stoped
+2025-10-07 17:38:50,550 - lightrag - INFO - Processing 1 document(s)
+2025-10-07 17:38:50,550 - lightrag - INFO - Extracting stage 1/1: unknown_source
+2025-10-07 17:38:50,550 - lightrag - INFO - Processing d-id: doc-a4155c00b1f29162e6f6e8a702537ecb
+2025-10-07 17:39:04,301 - lightrag - INFO -  == LLM cache == saving: default:extract:2ed41923acee3be0d19b8dc47d98e81b
+2025-10-07 17:39:28,742 - lightrag - INFO - [_] Created new empty graph fiel: ./rag_storage/graph_chunk_entity_relation.graphml
+2025-10-07 17:39:28,743 - lightrag - INFO - [_] Process 53186 KV load full_docs with 0 records
+2025-10-07 17:39:28,743 - lightrag - INFO - [_] Process 53186 KV load text_chunks with 0 records
+2025-10-07 17:39:28,743 - lightrag - INFO - [_] Process 53186 KV load full_entities with 0 records
+2025-10-07 17:39:28,743 - lightrag - INFO - [_] Process 53186 KV load full_relations with 0 records
+2025-10-07 17:39:28,743 - lightrag - INFO - [_] Process 53186 KV load llm_response_cache with 0 records
+2025-10-07 17:39:28,743 - lightrag - INFO - [_] Process 53186 doc status load doc_status with 0 records
+2025-10-07 17:39:28,857 - lightrag - INFO - Processing 1 document(s)
+2025-10-07 17:39:28,858 - lightrag - INFO - Extracting stage 1/1: unknown_source
+2025-10-07 17:39:28,858 - lightrag - INFO - Processing d-id: doc-06e64bc82a951269c0a71616ef6c5483
+2025-10-07 17:39:28,865 - lightrag - INFO - Embedding func: 8 new workers initialized (Timeouts: Func: 30s, Worker: 60s, Health Check: 75s)
+2025-10-07 17:39:29,219 - lightrag - INFO - LLM func: 4 new workers initialized (Timeouts: Func: 180s, Worker: 360s, Health Check: 375s)
+2025-10-07 17:39:32,893 - lightrag - INFO -  == LLM cache == saving: default:extract:f202aec75a4d0848ba5fcb503ce35b27
+2025-10-07 17:39:32,893 - lightrag - INFO - Chunk 1 of 1 extracted 5 Ent + 5 Rel chunk-9ab5aeaa7b080ae58aed2951152718c8
+2025-10-07 17:39:32,894 - lightrag - INFO - Merging stage 1/1: unknown_source
+2025-10-07 17:39:32,894 - lightrag - INFO - Phase 1: Processing 5 entities from doc-9ab5aeaa7b080ae58aed2951152718c8 (async: 8)
+2025-10-07 17:39:32,896 - lightrag - INFO - Merged: `Sauron` | 2+1
+2025-10-07 17:39:32,896 - lightrag - INFO - Merged: `The One Ring` | 2+1
+2025-10-07 17:39:47,743 - lightrag - INFO -  == LLM cache == saving: default:extract:b5a08b191e3ed053895843ad3b9b1685
+2025-10-07 17:39:50,405 - lightrag - INFO -  == LLM cache == saving: default:summary:544af79a77169c8f72670477a7dc7cd5
+2025-10-07 17:39:50,405 - lightrag - INFO - LLMmrg: `Galadriel` | 7+1
+2025-10-07 17:39:50,684 - lightrag - INFO - Phase 2: Processing 5 relations from doc-9ab5aeaa7b080ae58aed2951152718c8 (async: 8)
+2025-10-07 17:39:50,684 - lightrag - INFO - Merged: `Sauron`~`The One Ring` | 1+1
+2025-10-07 17:39:51,607 - lightrag - INFO - Phase 3: Updating final 5(5+0) entities and  5 relations from doc-9ab5aeaa7b080ae58aed2951152718c8
+2025-10-07 17:39:51,608 - lightrag - INFO - Completed merging: 5 entities, 0 extra entities, 5 relations
+2025-10-07 17:39:51,643 - lightrag - INFO - [_] Writing graph with 102 nodes, 167 edges
+2025-10-07 17:39:51,653 - lightrag - INFO - In memory DB persist to disk
+2025-10-07 17:39:51,653 - lightrag - INFO - Completed processing file 1/1: unknown_source
+2025-10-07 17:39:51,653 - lightrag - INFO - Enqueued document processing pipeline stoped
+2025-10-07 17:39:51,654 - lightrag - INFO - Processing 1 document(s)
+2025-10-07 17:39:51,654 - lightrag - INFO - Extracting stage 1/1: unknown_source
+2025-10-07 17:39:51,655 - lightrag - INFO - Processing d-id: doc-9c8ff398b6b0fa26a4416b6e99569e8e
+2025-10-07 17:40:07,888 - lightrag - INFO -  == LLM cache == saving: default:extract:f74182c1a3a2d0eb2aefbd7a02411063
+2025-10-07 17:40:30,261 - lightrag - INFO -  == LLM cache == saving: default:extract:280a756c1403712c60f8731c7960c910
+2025-10-07 17:40:30,262 - lightrag - INFO - Chunk 1 of 1 extracted 9 Ent + 15 Rel chunk-a4155c00b1f29162e6f6e8a702537ecb
+2025-10-07 17:40:30,263 - lightrag - INFO - Merging stage 1/1: unknown_source
+2025-10-07 17:40:30,263 - lightrag - INFO - Phase 1: Processing 9 entities from doc-a4155c00b1f29162e6f6e8a702537ecb (async: 8)
+2025-10-07 17:40:30,263 - lightrag - INFO - Merged: `Sauron` | 4+1
+2025-10-07 17:40:30,264 - lightrag - INFO - Merged: `Middle Earth` | 2+1
+2025-10-07 17:40:30,264 - lightrag - INFO - Merged: `One Ring` | 3+1
+2025-10-07 17:40:30,264 - lightrag - INFO - Merged: `Isildur` | 3+1
+2025-10-07 17:40:31,067 - lightrag - INFO - Phase 2: Processing 15 relations from doc-a4155c00b1f29162e6f6e8a702537ecb (async: 8)
+2025-10-07 17:40:31,068 - lightrag - INFO - Merged: `One Ring`~`Sauron` | 2+1
+2025-10-07 17:40:34,229 - lightrag - INFO - Phase 3: Updating final 9(9+0) entities and  15 relations from doc-a4155c00b1f29162e6f6e8a702537ecb
+2025-10-07 17:40:34,230 - lightrag - INFO - Completed merging: 9 entities, 0 extra entities, 15 relations
+2025-10-07 17:40:34,257 - lightrag - INFO - [_] Writing graph with 116 nodes, 169 edges
+2025-10-07 17:40:34,266 - lightrag - INFO - In memory DB persist to disk
+2025-10-07 17:40:34,266 - lightrag - INFO - Completed processing file 1/1: unknown_source
+2025-10-07 17:40:34,266 - lightrag - INFO - Enqueued document processing pipeline stoped
+2025-10-07 17:40:34,268 - lightrag - INFO - Processing 1 document(s)
+2025-10-07 17:40:34,268 - lightrag - INFO - Extracting stage 1/1: unknown_source
+2025-10-07 17:40:34,268 - lightrag - INFO - Processing d-id: doc-f8723cd85f35d0afe3950984d9906a94
+2025-10-07 17:40:38,178 - lightrag - INFO -  == LLM cache == saving: default:extract:545bc19c70ccb6ae2e3f5f63606f5c06
+2025-10-07 17:40:48,571 - lightrag - INFO -  == LLM cache == saving: default:extract:d0d39d4874876f16daf6e738da558406
+2025-10-07 17:40:48,574 - lightrag - INFO - Chunk 1 of 1 extracted 9 Ent + 11 Rel chunk-06e64bc82a951269c0a71616ef6c5483
+2025-10-07 17:40:48,575 - lightrag - INFO - Merging stage 1/1: unknown_source
+2025-10-07 17:40:48,575 - lightrag - INFO - Phase 1: Processing 9 entities from doc-06e64bc82a951269c0a71616ef6c5483 (async: 8)
+2025-10-07 17:40:49,107 - lightrag - INFO - Phase 2: Processing 11 relations from doc-06e64bc82a951269c0a71616ef6c5483 (async: 8)
+2025-10-07 17:40:51,194 - lightrag - INFO - Phase 3: Updating final 9(9+0) entities and  11 relations from doc-06e64bc82a951269c0a71616ef6c5483
+2025-10-07 17:40:51,194 - lightrag - INFO - Completed merging: 9 entities, 0 extra entities, 11 relations
+2025-10-07 17:40:51,200 - lightrag - INFO - [_] Writing graph with 9 nodes, 11 edges
+2025-10-07 17:40:51,216 - lightrag - INFO - In memory DB persist to disk
+2025-10-07 17:40:51,216 - lightrag - INFO - Completed processing file 1/1: unknown_source
+2025-10-07 17:40:51,216 - lightrag - INFO - Enqueued document processing pipeline stoped
+2025-10-07 17:40:51,216 - lightrag - INFO - Processing 1 document(s)
+2025-10-07 17:40:51,217 - lightrag - INFO - Extracting stage 1/1: unknown_source
+2025-10-07 17:40:51,217 - lightrag - INFO - Processing d-id: doc-0f651eb4ca08b2b972364231dcb658aa
+2025-10-07 17:41:12,801 - lightrag - INFO - Enqueued document processing pipeline stoped
+2025-10-07 17:41:12,802 - lightrag - INFO - Successfully finalized 10 storages
+2025-10-07 17:41:15,691 - lightrag - INFO -  == LLM cache == saving: default:extract:e0c99448acce3affc224f466382d2252
+2025-10-07 17:41:15,692 - lightrag - INFO - Chunk 1 of 1 extracted 10 Ent + 14 Rel chunk-9c8ff398b6b0fa26a4416b6e99569e8e
+2025-10-07 17:41:15,693 - lightrag - INFO - Merging stage 1/1: unknown_source
+2025-10-07 17:41:15,693 - lightrag - INFO - Phase 1: Processing 10 entities from doc-9c8ff398b6b0fa26a4416b6e99569e8e (async: 8)
+2025-10-07 17:41:15,694 - lightrag - INFO - Merged: `Galadriel` | 1+1
+2025-10-07 17:41:15,695 - lightrag - INFO - Merged: `The Ring` | 1+1
+2025-10-07 17:41:15,696 - lightrag - INFO - Merged: `Sauron` | 3+1
+2025-10-07 17:41:15,696 - lightrag - INFO - Merged: `Elendil` | 1+1
+2025-10-07 17:41:16,023 - lightrag - INFO - Merged: `Isildur` | 1+1
+2025-10-07 17:41:16,402 - lightrag - INFO - Phase 2: Processing 14 relations from doc-9c8ff398b6b0fa26a4416b6e99569e8e (async: 8)
+2025-10-07 17:41:18,239 - lightrag - INFO - Phase 3: Updating final 10(10+0) entities and  14 relations from doc-9c8ff398b6b0fa26a4416b6e99569e8e
+2025-10-07 17:41:18,239 - lightrag - INFO - Completed merging: 10 entities, 0 extra entities, 14 relations
+2025-10-07 17:41:18,268 - lightrag - INFO - [_] Writing graph with 107 nodes, 181 edges
+2025-10-07 17:41:18,277 - lightrag - INFO - In memory DB persist to disk
+2025-10-07 17:41:18,277 - lightrag - INFO - Completed processing file 1/1: unknown_source
+2025-10-07 17:41:18,277 - lightrag - INFO - Enqueued document processing pipeline stoped
+2025-10-07 17:41:18,279 - lightrag - INFO - Processing 1 document(s)
+2025-10-07 17:41:18,279 - lightrag - INFO - Extracting stage 1/1: unknown_source
+2025-10-07 17:41:18,279 - lightrag - INFO - Processing d-id: doc-503b0e53a25c35ce5e1ae4bc8ffc393d
+2025-10-07 17:41:25,232 - lightrag - INFO -  == LLM cache == saving: default:extract:270b9da04d6c65f9d7ca9397ccbadb73
+2025-10-07 17:41:46,075 - lightrag - INFO -  == LLM cache == saving: default:extract:b23c33d5c131f1530fba69c0587938d9
+2025-10-07 17:41:46,075 - lightrag - INFO - Chunk 1 of 1 extracted 7 Ent + 8 Rel chunk-f8723cd85f35d0afe3950984d9906a94
+2025-10-07 17:41:46,076 - lightrag - INFO - Merging stage 1/1: unknown_source
+2025-10-07 17:41:46,076 - lightrag - INFO - Phase 1: Processing 7 entities from doc-f8723cd85f35d0afe3950984d9906a94 (async: 8)
+2025-10-07 17:41:46,077 - lightrag - INFO - Merged: `One Ring` | 4+1
+2025-10-07 17:41:46,077 - lightrag - INFO - Merged: `Isildur` | 4+1
+2025-10-07 17:41:46,479 - lightrag - INFO - Phase 2: Processing 8 relations from doc-f8723cd85f35d0afe3950984d9906a94 (async: 8)
+2025-10-07 17:41:46,480 - lightrag - INFO - Merged: `Isildur`~`One Ring` | 1+1
+2025-10-07 17:41:48,188 - lightrag - INFO - Phase 3: Updating final 7(7+0) entities and  8 relations from doc-f8723cd85f35d0afe3950984d9906a94
+2025-10-07 17:41:48,189 - lightrag - INFO - Completed merging: 7 entities, 0 extra entities, 8 relations
+2025-10-07 17:41:48,228 - lightrag - INFO - [_] Writing graph with 121 nodes, 176 edges
+2025-10-07 17:41:48,244 - lightrag - INFO - In memory DB persist to disk
+2025-10-07 17:41:48,244 - lightrag - INFO - Completed processing file 1/1: unknown_source
+2025-10-07 17:41:48,245 - lightrag - INFO - Enqueued document processing pipeline stoped
+2025-10-07 17:41:48,245 - lightrag - INFO - Processing 1 document(s)
+2025-10-07 17:41:48,246 - lightrag - INFO - Extracting stage 1/1: unknown_source
+2025-10-07 17:41:48,246 - lightrag - INFO - Processing d-id: doc-294fc3c31ba54c9d42ca3c9e02ce4a24
+2025-10-07 17:41:53,285 - lightrag - INFO -  == LLM cache == saving: default:extract:69fec3f34b0de6fd83fcb85d5075ca8f
+2025-10-07 17:46:12,801 - lightrag - INFO -  == LLM cache == saving: default:extract:fd11ab0483a4848aaa9d07fcf7403ccd
+2025-10-07 17:46:12,802 - lightrag - INFO - Chunk 1 of 1 extracted 6 Ent + 11 Rel chunk-503b0e53a25c35ce5e1ae4bc8ffc393d
+2025-10-07 17:46:12,803 - lightrag - INFO - Merging stage 1/1: unknown_source
+2025-10-07 17:46:12,803 - lightrag - INFO - Phase 1: Processing 6 entities from doc-503b0e53a25c35ce5e1ae4bc8ffc393d (async: 8)
+2025-10-07 17:46:12,804 - lightrag - INFO - Merged: `Galadriel` | 2+1
+2025-10-07 17:46:12,804 - lightrag - INFO - Merged: `Isildur` | 2+1
+2025-10-07 17:46:12,805 - lightrag - INFO - Merged: `Sauron` | 4+1
+2025-10-07 17:46:12,805 - lightrag - INFO - Merged: `The One Ring` | 3+1
+2025-10-07 17:46:13,250 - lightrag - INFO - Phase 2: Processing 11 relations from doc-503b0e53a25c35ce5e1ae4bc8ffc393d (async: 8)
+2025-10-07 17:46:13,250 - lightrag - INFO - Merged: `Sauron`~`The One Ring` | 2+1
+2025-10-07 17:46:14,430 - lightrag - INFO - Merged: `Galadriel`~`Sauron` | 1+1
+2025-10-07 17:46:14,649 - lightrag - INFO - Merged: `Galadriel`~`The One Ring` | 1+1
+2025-10-07 17:46:15,138 - lightrag - INFO - Phase 3: Updating final 6(6+0) entities and  11 relations from doc-503b0e53a25c35ce5e1ae4bc8ffc393d
+2025-10-07 17:46:15,139 - lightrag - INFO - Completed merging: 6 entities, 0 extra entities, 11 relations
+2025-10-07 17:46:15,171 - lightrag - INFO - [_] Writing graph with 109 nodes, 189 edges
+2025-10-07 17:46:15,208 - lightrag - INFO - In memory DB persist to disk
+2025-10-07 17:46:15,208 - lightrag - INFO - Completed processing file 1/1: unknown_source
+2025-10-07 17:46:15,209 - lightrag - INFO - Enqueued document processing pipeline stoped
+2025-10-07 17:46:15,210 - lightrag - INFO - Processing 1 document(s)
+2025-10-07 17:46:15,210 - lightrag - INFO - Extracting stage 1/1: unknown_source
+2025-10-07 17:46:15,210 - lightrag - INFO - Processing d-id: doc-814fea0d6e711f0068b821ca7297f254
+2025-10-07 17:46:35,232 - lightrag - INFO -  == LLM cache == saving: default:extract:d0ae029f13c5439928f5969db7840356
+2025-10-07 17:46:56,826 - lightrag - INFO -  == LLM cache == saving: default:extract:b688942a67b7a6d1cb100449c8d56a8f
+2025-10-07 17:47:16,758 - lightrag - INFO -  == LLM cache == saving: default:extract:6cea900ef060d66dcf73331c74ca94be
+2025-10-07 17:47:16,758 - lightrag - INFO - Chunk 1 of 1 extracted 10 Ent + 10 Rel chunk-294fc3c31ba54c9d42ca3c9e02ce4a24
+2025-10-07 17:47:16,759 - lightrag - INFO - Merging stage 1/1: unknown_source
+2025-10-07 17:47:16,759 - lightrag - INFO - Phase 1: Processing 10 entities from doc-294fc3c31ba54c9d42ca3c9e02ce4a24 (async: 8)
+2025-10-07 17:47:16,759 - lightrag - INFO - Merged: `Isildur` | 5+1
+2025-10-07 17:47:16,760 - lightrag - INFO - Merged: `Orcs` | 2+1
+2025-10-07 17:47:16,760 - lightrag - INFO - Merged: `Men` | 1+1
+2025-10-07 17:47:16,760 - lightrag - INFO - Merged: `Water` | 1+1
+2025-10-07 17:47:17,580 - lightrag - INFO - Phase 2: Processing 10 relations from doc-294fc3c31ba54c9d42ca3c9e02ce4a24 (async: 8)
+2025-10-07 17:47:19,002 - lightrag - INFO - Phase 3: Updating final 10(10+0) entities and  10 relations from doc-294fc3c31ba54c9d42ca3c9e02ce4a24
+2025-10-07 17:47:19,002 - lightrag - INFO - Completed merging: 10 entities, 0 extra entities, 10 relations
+2025-10-07 17:47:19,036 - lightrag - INFO - [_] Writing graph with 127 nodes, 186 edges
+2025-10-07 17:47:19,059 - lightrag - INFO - In memory DB persist to disk
+2025-10-07 17:47:19,059 - lightrag - INFO - Completed processing file 1/1: unknown_source
+2025-10-07 17:47:19,059 - lightrag - INFO - Enqueued document processing pipeline stoped
+2025-10-07 17:47:19,061 - lightrag - INFO - Processing 1 document(s)
+2025-10-07 17:47:19,061 - lightrag - INFO - Extracting stage 1/1: unknown_source
+2025-10-07 17:47:19,061 - lightrag - INFO - Processing d-id: doc-fb8a5569eaf8a5dff8db0c03f7e81978
+2025-10-07 17:47:35,747 - lightrag - INFO -  == LLM cache == saving: default:extract:2f713c47a3c0d7ff5271a81481b85c5e
+2025-10-07 17:47:35,748 - lightrag - INFO - Chunk 1 of 1 extracted 10 Ent + 12 Rel chunk-814fea0d6e711f0068b821ca7297f254
+2025-10-07 17:47:35,748 - lightrag - INFO - Merging stage 1/1: unknown_source
+2025-10-07 17:47:35,748 - lightrag - INFO - Phase 1: Processing 10 entities from doc-814fea0d6e711f0068b821ca7297f254 (async: 8)
+2025-10-07 17:47:35,749 - lightrag - INFO - Merged: `Galadriel` | 3+1
+2025-10-07 17:47:35,749 - lightrag - INFO - Merged: `Sauron` | 5+1
+2025-10-07 17:47:35,749 - lightrag - INFO - Merged: `Middle Earth` | 2+1
+2025-10-07 17:47:35,750 - lightrag - INFO - Merged: `Isildur` | 3+1
+2025-10-07 17:47:35,750 - lightrag - INFO - Merged: `One Ring` | 2+1
+2025-10-07 17:47:36,016 - lightrag - INFO - Merged: `Voiceover` | 1+1
+2025-10-07 17:47:37,233 - lightrag - INFO - Phase 2: Processing 12 relations from doc-814fea0d6e711f0068b821ca7297f254 (async: 8)
+2025-10-07 17:47:39,094 - lightrag - INFO - Phase 3: Updating final 10(10+0) entities and  12 relations from doc-814fea0d6e711f0068b821ca7297f254
+2025-10-07 17:47:39,094 - lightrag - INFO - Completed merging: 10 entities, 0 extra entities, 12 relations
+2025-10-07 17:47:39,125 - lightrag - INFO - [_] Writing graph with 113 nodes, 201 edges
+2025-10-07 17:47:39,150 - lightrag - INFO - In memory DB persist to disk
+2025-10-07 17:47:39,150 - lightrag - INFO - Completed processing file 1/1: unknown_source
+2025-10-07 17:47:39,150 - lightrag - INFO - Enqueued document processing pipeline stoped
+2025-10-07 17:47:39,151 - lightrag - INFO - Processing 1 document(s)
+2025-10-07 17:47:39,152 - lightrag - INFO - Extracting stage 1/1: unknown_source
+2025-10-07 17:47:39,152 - lightrag - INFO - Processing d-id: doc-c8b975e55341eec08bb46a6ba93ec9ea
+2025-10-07 17:47:51,662 - lightrag - INFO -  == LLM cache == saving: default:extract:f18896e48f3301ca7739560f2e4efb61
+2025-10-07 17:48:11,351 - lightrag - INFO -  == LLM cache == saving: default:extract:af57eb1af29c90b07545f887fd760dc8
+2025-10-07 17:48:11,351 - lightrag - INFO - Chunk 1 of 1 extracted 4 Ent + 3 Rel chunk-fb8a5569eaf8a5dff8db0c03f7e81978
+2025-10-07 17:48:11,352 - lightrag - INFO - Merging stage 1/1: unknown_source
+2025-10-07 17:48:11,353 - lightrag - INFO - Phase 1: Processing 4 entities from doc-fb8a5569eaf8a5dff8db0c03f7e81978 (async: 8)
+2025-10-07 17:48:11,353 - lightrag - INFO - Merged: `Isildur` | 6+1
+2025-10-07 17:48:11,354 - lightrag - INFO - Merged: `The Ring` | 1+1
+2025-10-07 17:48:11,354 - lightrag - INFO - Merged: `Death` | 1+1
+2025-10-07 17:48:11,723 - lightrag - INFO - Phase 2: Processing 3 relations from doc-fb8a5569eaf8a5dff8db0c03f7e81978 (async: 8)
+2025-10-07 17:48:11,866 - lightrag - INFO - Merged: `Death`~`Isildur` | 1+1
+2025-10-07 17:48:12,141 - lightrag - INFO - Phase 3: Updating final 4(4+0) entities and  3 relations from doc-fb8a5569eaf8a5dff8db0c03f7e81978
+2025-10-07 17:48:12,141 - lightrag - INFO - Completed merging: 4 entities, 0 extra entities, 3 relations
+2025-10-07 17:48:12,181 - lightrag - INFO - [_] Writing graph with 128 nodes, 188 edges
+2025-10-07 17:48:12,200 - lightrag - INFO - In memory DB persist to disk
+2025-10-07 17:48:12,200 - lightrag - INFO - Completed processing file 1/1: unknown_source
+2025-10-07 17:48:12,200 - lightrag - INFO - Enqueued document processing pipeline stoped
+2025-10-07 17:48:12,201 - lightrag - INFO - Processing 1 document(s)
+2025-10-07 17:48:12,201 - lightrag - INFO - Extracting stage 1/1: unknown_source
+2025-10-07 17:48:12,201 - lightrag - INFO - Processing d-id: doc-7904f41ddd80d8625848695eb006e8a3
+2025-10-07 17:48:38,758 - lightrag - INFO -  == LLM cache == saving: default:extract:87ab545995d2b72073b7503a1f9cc97d
+2025-10-07 17:48:41,745 - lightrag - INFO -  == LLM cache == saving: default:extract:c38c28bf94f570e0ff8fefe76b54b440
+2025-10-07 17:48:53,789 - lightrag - INFO -  == LLM cache == saving: default:extract:33e5920a761be4f711f2579253714b70
+2025-10-07 17:48:53,789 - lightrag - INFO - Chunk 1 of 1 extracted 4 Ent + 3 Rel chunk-7904f41ddd80d8625848695eb006e8a3
+2025-10-07 17:48:53,790 - lightrag - INFO - Merging stage 1/1: unknown_source
+2025-10-07 17:48:53,790 - lightrag - INFO - Phase 1: Processing 4 entities from doc-7904f41ddd80d8625848695eb006e8a3 (async: 8)
+2025-10-07 17:48:53,791 - lightrag - INFO - Merged: `Fade To Black` | 1+1
+2025-10-07 17:48:54,305 - lightrag - INFO - Phase 2: Processing 3 relations from doc-7904f41ddd80d8625848695eb006e8a3 (async: 8)
+2025-10-07 17:48:55,075 - lightrag - INFO - Phase 3: Updating final 4(4+0) entities and  3 relations from doc-7904f41ddd80d8625848695eb006e8a3
+2025-10-07 17:48:55,075 - lightrag - INFO - Completed merging: 4 entities, 0 extra entities, 3 relations
+2025-10-07 17:48:55,107 - lightrag - INFO - [_] Writing graph with 131 nodes, 191 edges
+2025-10-07 17:48:55,137 - lightrag - INFO - In memory DB persist to disk
+2025-10-07 17:48:55,138 - lightrag - INFO - Completed processing file 1/1: unknown_source
+2025-10-07 17:48:55,138 - lightrag - INFO - Enqueued document processing pipeline stoped
+2025-10-07 17:48:55,140 - lightrag - INFO - Processing 1 document(s)
+2025-10-07 17:48:55,140 - lightrag - INFO - Extracting stage 1/1: unknown_source
+2025-10-07 17:48:55,140 - lightrag - INFO - Processing d-id: doc-b382c3e58a3b3e6fc6c8fdcd035e1693
+2025-10-07 17:49:15,915 - lightrag - INFO -  == LLM cache == saving: default:extract:2dacbd83b7808709da4044a0f2dbdabe
+2025-10-07 17:49:38,122 - lightrag - INFO -  == LLM cache == saving: default:extract:b4eadae3207cdff1f88a8f9eea268558
+2025-10-07 17:49:38,123 - lightrag - INFO - Chunk 1 of 1 extracted 5 Ent + 3 Rel chunk-b382c3e58a3b3e6fc6c8fdcd035e1693
+2025-10-07 17:49:38,123 - lightrag - INFO - Merging stage 1/1: unknown_source
+2025-10-07 17:49:38,123 - lightrag - INFO - Phase 1: Processing 5 entities from doc-b382c3e58a3b3e6fc6c8fdcd035e1693 (async: 8)
+2025-10-07 17:49:38,123 - lightrag - INFO - Merged: `Fade Up` | 1+1
+2025-10-07 17:49:38,523 - lightrag - INFO - Phase 2: Processing 3 relations from doc-b382c3e58a3b3e6fc6c8fdcd035e1693 (async: 8)
+2025-10-07 17:49:39,140 - lightrag - INFO - Phase 3: Updating final 5(5+0) entities and  3 relations from doc-b382c3e58a3b3e6fc6c8fdcd035e1693
+2025-10-07 17:49:39,140 - lightrag - INFO - Completed merging: 5 entities, 0 extra entities, 3 relations
+2025-10-07 17:49:39,173 - lightrag - INFO - [_] Writing graph with 135 nodes, 194 edges
+2025-10-07 17:49:39,194 - lightrag - INFO - In memory DB persist to disk
+2025-10-07 17:49:39,195 - lightrag - INFO - Completed processing file 1/1: unknown_source
+2025-10-07 17:49:39,195 - lightrag - INFO - Enqueued document processing pipeline stoped
+2025-10-07 17:49:39,196 - lightrag - INFO - Processing 1 document(s)
+2025-10-07 17:49:39,196 - lightrag - INFO - Extracting stage 1/1: unknown_source
+2025-10-07 17:49:39,196 - lightrag - INFO - Processing d-id: doc-b016c7ccf828404bd3bf6b9cf68f0cb1
+2025-10-07 17:49:48,264 - lightrag - INFO -  == LLM cache == saving: default:extract:36ab000e1ba48d130635f73a696f4895
+2025-10-07 17:49:48,265 - lightrag - INFO - Chunk 1 of 1 extracted 10 Ent + 13 Rel chunk-c8b975e55341eec08bb46a6ba93ec9ea
+2025-10-07 17:49:48,266 - lightrag - INFO - Merging stage 1/1: unknown_source
+2025-10-07 17:49:48,266 - lightrag - INFO - Phase 1: Processing 10 entities from doc-c8b975e55341eec08bb46a6ba93ec9ea (async: 8)
+2025-10-07 17:49:48,267 - lightrag - INFO - Merged: `Galadriel` | 4+1
+2025-10-07 17:49:48,267 - lightrag - INFO - Merged: `Isildur` | 4+1
+2025-10-07 17:49:48,267 - lightrag - INFO - Merged: `The One Ring` | 4+1
+2025-10-07 17:49:48,547 - lightrag - INFO - Merged: `Voice-Over` | 5+1
+2025-10-07 17:49:48,560 - lightrag - INFO - Merged: `Image` | 2+1
+2025-10-07 17:49:49,151 - lightrag - INFO - Phase 2: Processing 13 relations from doc-c8b975e55341eec08bb46a6ba93ec9ea (async: 8)
+2025-10-07 17:49:50,173 - lightrag - INFO - Merged: `Galadriel`~`Isildur` | 1+1
+2025-10-07 17:49:50,401 - lightrag - INFO - Merged: `Galadriel`~`Voice-Over` | 5+1
+2025-10-07 17:49:51,523 - lightrag - INFO - Phase 3: Updating final 10(10+0) entities and  13 relations from doc-c8b975e55341eec08bb46a6ba93ec9ea
+2025-10-07 17:49:51,523 - lightrag - INFO - Completed merging: 10 entities, 0 extra entities, 13 relations
+2025-10-07 17:49:51,560 - lightrag - INFO - [_] Writing graph with 118 nodes, 212 edges
+2025-10-07 17:49:51,604 - lightrag - INFO - In memory DB persist to disk
+2025-10-07 17:49:51,604 - lightrag - INFO - Completed processing file 1/1: unknown_source
+2025-10-07 17:49:51,604 - lightrag - INFO - Enqueued document processing pipeline stoped
+2025-10-07 17:49:51,605 - lightrag - INFO - Processing 1 document(s)
+2025-10-07 17:49:51,605 - lightrag - INFO - Extracting stage 1/1: unknown_source
+2025-10-07 17:49:51,605 - lightrag - INFO - Processing d-id: doc-6a716288943c546e86384a9855c36d71
+2025-10-07 17:50:22,903 - lightrag - INFO -  == LLM cache == saving: default:extract:c0d4b21e0ef3fa793da045a05778c06f
+2025-10-07 17:50:53,364 - lightrag - INFO -  == LLM cache == saving: default:extract:3848700a6f5dde268840ebca8f2aff4b
+2025-10-07 17:51:12,317 - lightrag - INFO -  == LLM cache == saving: default:extract:e2f2a3ab7c84a9c88adbed044ed9890c
+2025-10-07 17:51:12,317 - lightrag - INFO - Chunk 1 of 1 extracted 7 Ent + 11 Rel chunk-b016c7ccf828404bd3bf6b9cf68f0cb1
+2025-10-07 17:51:12,317 - lightrag - INFO - Merging stage 1/1: unknown_source
+2025-10-07 17:51:12,318 - lightrag - INFO - Phase 1: Processing 7 entities from doc-b016c7ccf828404bd3bf6b9cf68f0cb1 (async: 8)
+2025-10-07 17:51:12,318 - lightrag - INFO - Merged: `Ring` | 1+1
+2025-10-07 17:51:12,318 - lightrag - INFO - Merged: `Image` | 1+1
+2025-10-07 17:51:12,906 - lightrag - INFO - Phase 2: Processing 11 relations from doc-b016c7ccf828404bd3bf6b9cf68f0cb1 (async: 8)
+2025-10-07 17:51:14,743 - lightrag - INFO - Phase 3: Updating final 7(7+0) entities and  11 relations from doc-b016c7ccf828404bd3bf6b9cf68f0cb1
+2025-10-07 17:51:14,743 - lightrag - INFO - Completed merging: 7 entities, 0 extra entities, 11 relations
+2025-10-07 17:51:14,773 - lightrag - INFO - [_] Writing graph with 140 nodes, 205 edges
+2025-10-07 17:51:14,801 - lightrag - INFO - In memory DB persist to disk
+2025-10-07 17:51:14,801 - lightrag - INFO - Completed processing file 1/1: unknown_source
+2025-10-07 17:51:14,801 - lightrag - INFO - Enqueued document processing pipeline stoped
+2025-10-07 17:51:14,802 - lightrag - INFO - Processing 1 document(s)
+2025-10-07 17:51:14,802 - lightrag - INFO - Extracting stage 1/1: unknown_source
+2025-10-07 17:51:14,802 - lightrag - INFO - Processing d-id: doc-44b7cfe26a7bb9878b18f083008eaeb6
+2025-10-07 17:51:33,810 - lightrag - INFO -  == LLM cache == saving: default:extract:e74e88a92a293ed77c2272fa7ce11e73
+2025-10-07 17:51:33,811 - lightrag - INFO - Chunk 1 of 1 extracted 13 Ent + 14 Rel chunk-6a716288943c546e86384a9855c36d71
+2025-10-07 17:51:33,811 - lightrag - INFO - Merging stage 1/1: unknown_source
+2025-10-07 17:51:33,811 - lightrag - INFO - Phase 1: Processing 13 entities from doc-6a716288943c546e86384a9855c36d71 (async: 8)
+2025-10-07 17:51:33,812 - lightrag - INFO - Merged: `Galadriel` | 5+1
+2025-10-07 17:51:33,812 - lightrag - INFO - Merged: `Men` | 2+1
+2025-10-07 17:51:33,812 - lightrag - INFO - Merged: `Isildur` | 5+1
+2025-10-07 17:51:33,812 - lightrag - INFO - Merged: `Orcs` | 2+1
+2025-10-07 17:51:34,147 - lightrag - INFO - Merged: `Voiceover` | 2+1
+2025-10-07 17:51:34,159 - lightrag - INFO - Merged: `Fade To Black` | 2+1
+2025-10-07 17:51:34,170 - lightrag - INFO - Merged: `Fade Up` | 2+1
+2025-10-07 17:51:34,441 - lightrag - INFO - Phase 2: Processing 14 relations from doc-6a716288943c546e86384a9855c36d71 (async: 8)
+2025-10-07 17:51:34,873 - lightrag - INFO - Merged: `Galadriel`~`Voiceover` | 1+1
+2025-10-07 17:51:35,668 - lightrag - INFO - Merged: `Fade Up`~`Isildur` | 1+1
+2025-10-07 17:51:36,200 - lightrag - INFO - Phase 3: Updating final 13(13+0) entities and  14 relations from doc-6a716288943c546e86384a9855c36d71
+2025-10-07 17:51:36,200 - lightrag - INFO - Completed merging: 13 entities, 0 extra entities, 14 relations
+2025-10-07 17:51:36,228 - lightrag - INFO - [_] Writing graph with 124 nodes, 224 edges
+2025-10-07 17:51:36,242 - lightrag - INFO - In memory DB persist to disk
+2025-10-07 17:51:36,242 - lightrag - INFO - Completed processing file 1/1: unknown_source
+2025-10-07 17:51:36,242 - lightrag - INFO - Enqueued document processing pipeline stoped
+2025-10-07 17:51:36,243 - lightrag - INFO - Processing 1 document(s)
+2025-10-07 17:51:36,243 - lightrag - INFO - Extracting stage 1/1: unknown_source
+2025-10-07 17:51:36,243 - lightrag - INFO - Processing d-id: doc-51bb14fb9e9a91700c1338dfee537b64
+2025-10-07 17:51:51,053 - lightrag - INFO -  == LLM cache == saving: default:extract:2a3c9a33ad21ab3af6bfb9212ccff2ba
+2025-10-07 17:52:12,007 - lightrag - INFO -  == LLM cache == saving: default:extract:c5cc87067db58b5dd2b9ad69f83baece
+2025-10-07 17:52:12,007 - lightrag - INFO - Chunk 1 of 1 extracted 5 Ent + 4 Rel chunk-44b7cfe26a7bb9878b18f083008eaeb6
+2025-10-07 17:52:12,007 - lightrag - INFO - Merging stage 1/1: unknown_source
+2025-10-07 17:52:12,007 - lightrag - INFO - Phase 1: Processing 5 entities from doc-44b7cfe26a7bb9878b18f083008eaeb6 (async: 8)
+2025-10-07 17:52:12,008 - lightrag - INFO - Merged: `One Ring` | 5+1
+2025-10-07 17:52:12,008 - lightrag - INFO - Merged: `Image` | 2+1
+2025-10-07 17:52:12,423 - lightrag - INFO - Phase 2: Processing 4 relations from doc-44b7cfe26a7bb9878b18f083008eaeb6 (async: 8)
+2025-10-07 17:52:13,526 - lightrag - INFO - Phase 3: Updating final 5(5+0) entities and  4 relations from doc-44b7cfe26a7bb9878b18f083008eaeb6
+2025-10-07 17:52:13,526 - lightrag - INFO - Completed merging: 5 entities, 0 extra entities, 4 relations
+2025-10-07 17:52:13,543 - lightrag - INFO -  == LLM cache == saving: default:extract:33205940ac0d2cadc8dc402ed60bec8d
+2025-10-07 17:52:13,567 - lightrag - INFO - [_] Writing graph with 143 nodes, 209 edges
+2025-10-07 17:52:13,576 - lightrag - INFO - In memory DB persist to disk
+2025-10-07 17:52:13,576 - lightrag - INFO - Completed processing file 1/1: unknown_source
+2025-10-07 17:52:13,576 - lightrag - INFO - Enqueued document processing pipeline stoped
+2025-10-07 17:52:13,577 - lightrag - INFO - Processing 1 document(s)
+2025-10-07 17:52:13,577 - lightrag - INFO - Extracting stage 1/1: unknown_source
+2025-10-07 17:52:13,577 - lightrag - INFO - Processing d-id: doc-e88e8dd06673f85eb5bbeaa1a968ad21
